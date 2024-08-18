@@ -2,6 +2,7 @@ import React from "react";
 import { GoPerson } from "react-icons/go";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { AiOutlineHeart } from "react-icons/ai";
+import { CgSearch } from "react-icons/cg";
 
 function NavigationBar() {
   return (
@@ -10,7 +11,7 @@ function NavigationBar() {
         <li>Home</li>
         <li>Shop</li>
       </ul>
-      <div className="">
+      <div className="flex items-center">
         <div className="flex text-[25px] gap-4 text-neutral-600">
           <GoPerson />
           <AiOutlineHeart />
