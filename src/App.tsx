@@ -7,13 +7,15 @@ import {
 import Home from "./pages/Home";
 import MainLayout from "./layouts/MainLayout";
 import CartProvider from "./context/CartContext";
+import Shop from "./pages/Shop";
 
 // To hold the router instance and pass it to the RouterProvider
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" element={<MainLayout />}>
-        <Route index element={<Home />}></Route>
+        <Route index element={<Home />} />
+        <Route path="shop" element={<Shop />} />
       </Route>
     </Route>
   )
