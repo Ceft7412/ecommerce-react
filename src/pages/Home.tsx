@@ -48,12 +48,12 @@ function Home() {
       <section className="relative h-screen bg-orange-50 pt-[80px] flex justify-center items-center ">
         <div className="w-full h-full flex px-38 justify-between">
           <div className="w-[50%] flex  justify-center pl-40 pb-20 text-neutral-800 flex-col">
-            <p className="text-[25px]">OUR ALL TIME FAVORITES</p>
+            <p className="text-[25px] text-orange-500">OUR ALL TIME FAVORITES</p>
             <h1 className="text-[80px] font-medium">{category}</h1>
             <p className="font-medium text-neutral-500">{description}</p>
             <div className="pt-16">
-              <button className="border p-2 bg-neutral-700 text-white font-medium hover:bg-neutral-800 outline-none">
-                Discover More
+              <button className="tracking-widest border p-2 bg-neutral-700 text-white font-medium hover:bg-neutral-800 outline-none">
+                DISCOVER MORE
               </button>
             </div>
           </div>
@@ -92,7 +92,7 @@ function Home() {
                 onClick={() => handleSpecificClick(index)}
               />
             )
-          )}  
+          )}
         </div>
       </section>
       <Products />
