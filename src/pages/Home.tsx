@@ -1,7 +1,113 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { MdOutlineCircle } from "react-icons/md";
+import { MdCircle } from "react-icons/md";
+import { IoIosArrowBack } from "react-icons/io";
+import { AnimatePresence, motion } from "framer-motion";
+import mensClothingImage from "../assets/images/mens_clothing.png";
+import womensClothingImage from "../assets/images/womens_clothing.png";
+
+const contents = [
+  {
+    category: "Men's Clothing",
+    image: mensClothingImage,
+    description:
+      "This is a collection of men's clothing including shirts, pants, jackets, and more.",
+  },
+  {
+    category: "Women's Clothing",
+    image: womensClothingImage,
+    description:
+      "This is a collection of women's clothing including shirts, pants, jackets, and more.",
+  },
+];
 
 function Home() {
-  return <section className="h-screen bg-orange-50 pt-[80px]"></section>;
+  const [products, setProducts] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get("https://fakestoreapi.com/products");
+      console.log(response.data);
+      setProducts(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const handleNextClick = () => {
+    setCurrentIndex((currentIndex + 1) % contents.length);
+  };
+  const handlePrevClick = () => {
+    setCurrentIndex((currentIndex - 1 + contents.length) % contents.length);
+  };
+  const handleSpecificClick = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((currentIndex + 1) % contents.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+  const { category, image, description } = contents[currentIndex];
+  return (
+    <section className="relative h-screen bg-orange-50 pt-[80px] flex justify-center items-center ">
+      <div className="w-full h-full flex px-38 justify-between">
+        <div className="w-[50%] flex  justify-center pl-40 pb-20 text-neutral-800 flex-col">
+          <p className="text-[25px]">OUR ALL TIME FAVORITES</p>
+          <h1 className="text-[80px] font-medium">{category}</h1>
+          <p className="font-medium text-neutral-500">{description}</p>
+          <div className="pt-16">
+            <button className="border p-2 bg-neutral-700 text-white font-medium hover:bg-neutral-800">
+              Discover More
+            </button>
+          </div>
+        </div>
+        <div className="w-[50%] flex justify-center items-center ">
+          <img
+            src={image}
+            alt={category}
+            className="h-full pr-40 object-contain rounded-xl3"
+          />
+        </div>
+      </div>
+
+      <div className="text-[25px] text-neutral-400  ">
+        <div
+          className="absolute left-10 top-[45%] hover:text-black transition-colors duration-400"
+          onClick={handlePrevClick}
+        >
+          <IoIosArrowBack />
+        </div>
+
+        <div
+          className="absolute right-10 rotate-180 top-[45%] hover:text-black transition-colors duration-400"
+          onClick={handleNextClick}
+        >
+          <IoIosArrowBack />
+        </div>
+      </div>
+      <div className="absolute bottom-5 text-neutral-500 flex gap-1">
+        {contents.map((content, index) =>
+          currentIndex === index ? (
+            <MdCircle key={index} className="text-black" />
+          ) : (
+            <MdOutlineCircle
+              key={index}
+              className="hover:text-black transition-colors duration-400"
+              onClick={() => handleSpecificClick(index)}
+            />
+          )
+        )}
+      </div>
+    </section>
+  );
 }
 
 export default Home;
