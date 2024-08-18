@@ -6,7 +6,7 @@ function MainLayout() {
   return (
     <>
       <NavigationBar />
-      <main className="pt-[80px]">
+      <main className="max-w-screen-2xl mx-auto">
         <Outlet />
       </main>
     </>
