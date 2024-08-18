@@ -17,7 +17,7 @@ function NavigationBar() {
         <div className="flex text-[25px] gap-4 text-neutral-600">
           <GoPerson />
           <AiOutlineHeart />
-          <HiOutlineShoppingBag onClick={toggleCart} />
+          <HiOutlineShoppingBag className="cursor-pointer" onClick={toggleCart} />
         </div>
       </div>
     </header>
