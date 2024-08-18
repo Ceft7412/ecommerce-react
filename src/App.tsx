@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import MainLayout from "./layouts/MainLayout";
+import CartProvider from "./context/CartContext";
 
 // To hold the router instance and pass it to the RouterProvider
 const router = createBrowserRouter(
@@ -20,7 +21,9 @@ const router = createBrowserRouter(
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
     </>
   );
 }
