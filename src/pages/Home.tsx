@@ -53,7 +53,7 @@ function Home() {
             <p className="font-medium text-neutral-500">{description}</p>
             <div className="pt-16">
               <button className="tracking-widest border p-2 bg-neutral-700 text-white font-medium hover:bg-neutral-800 outline-none">
-                DISCOVER MORE
+                SHOP NOW
               </button>
             </div>
           </div>
