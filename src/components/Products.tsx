@@ -17,7 +17,7 @@ function Products() {
   const [products, setProducts] = useState<Product[] | null>([]);
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("https://fakestoreapi.com/products");
+      const response = await axios.get("https://fakestoreapi.com/products?limit=7");
       console.log(response.data);
       setProducts(response.data);
     } catch (error) {
@@ -52,7 +52,7 @@ function Products() {
                       ) : (
                         <FaRegStar key={i} />
                       )
-                    )}  
+                    )}
                   </div>
                 </div>
                 <div className="">
