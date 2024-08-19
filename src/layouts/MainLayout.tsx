@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { DropDownContext } from "../context/DropDownContext";
 import { Outlet } from "react-router-dom";
 import NavigationBar from "../components/NavigationBar";
@@ -7,8 +7,7 @@ import Footer from "../components/Footer";
 import ScrollTop from "../components/ScrollTop";
 
 function MainLayout() {
-  const { isDropDownOpen, toggleDropDown, setIsDropDownOpen } =
-    useContext(DropDownContext);
+  const { setIsDropDownOpen } = useContext(DropDownContext);
   return (
     <>
       <div onClick={() => setIsDropDownOpen(false)}>
