@@ -9,6 +9,7 @@ import MainLayout from "./layouts/MainLayout";
 import CartProvider from "./context/CartContext";
 import Shop from "./pages/Shop";
 import DropDownProvider from "./context/DropDownContext";
+import Product from "./pages/Product";
 
 // To hold the router instance and pass it to the RouterProvider
 const router = createBrowserRouter(
@@ -17,6 +18,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
         <Route path="shop" element={<Shop />} />
+        <Route path="/product/:id" element={<Product />} />
       </Route>
     </Route>
   )
