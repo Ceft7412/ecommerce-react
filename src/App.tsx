@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import MainLayout from "./layouts/MainLayout";
 import CartProvider from "./context/CartContext";
 import Shop from "./pages/Shop";
+import DropDownProvider from "./context/DropDownContext";
 
 // To hold the router instance and pass it to the RouterProvider
 const router = createBrowserRouter(
@@ -24,7 +25,9 @@ function App() {
   return (
     <>
       <CartProvider>
-        <RouterProvider router={router} />
+        <DropDownProvider>
+          <RouterProvider router={router} />
+        </DropDownProvider>
       </CartProvider>
     </>
   );
