@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { CartContext } from "../context/CartContext";
 import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa6";
+import { PiMessengerLogo } from "react-icons/pi";
 
 type Product = {
   id?: number;
@@ -15,6 +17,9 @@ type Product = {
 };
 function Products() {
   const [products, setProducts] = useState<Product[] | null>([]);
+  const [isMessage, setIsMessage] = useState<boolean>(false);
+  const { setCartItems } = useContext(CartContext);
+
   const fetchProducts = async () => {
     try {
       const response = await axios.get("https://fakestoreapi.com/products?limit=7");
@@ -24,10 +29,58 @@ function Products() {
       console.error(error);
     }
   };
-
+  console.log("products: ", products);
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  const handleAddToCart = async (productId: number) => {
+    try {
+      const response = await axios.get(`https://fakestoreapi.com/products/${productId}`);
+      // Get the cart from local storage
+      const cart = JSON.parse(localStorage.getItem("carts") || "[]");
+
+      // Check if the item is already in the cart
+      const existingItem = cart.find((item: any) => item.id === response.data.id);
+
+      if (existingItem) {
+        // If the item is already in the cart, increment its quantity
+        existingItem.quantity += 1;
+      } else {
+        // If the item is not in the cart, add it with a quantity of 1
+        response.data.quantity = 1;
+        cart.push(response.data);
+      }
+      // Update the cart in local storage
+      localStorage.setItem("carts", JSON.stringify(cart));
+      setCartItems((prevCartItems) => {
+        if (prevCartItems) {
+          // Check if the item is already in the cart
+          const existingItemIndex = prevCartItems.findIndex(
+            (item) => item.id === response.data.id
+          );
+
+          if (existingItemIndex !== -1) {
+            // If the item is already in the cart, increment its quantity
+            const newCartItems = [...prevCartItems];
+            newCartItems[existingItemIndex].quantity! += 1; // Add type assertion to ensure existingItem is not undefined
+            return newCartItems;
+          } else {
+            // If the item is not in the cart, add it with a quantity of 1
+            response.data.quantity = 1;
+            return [...prevCartItems, response.data];
+          }
+        } else {
+          // If there are no items in the cart, add the new item with a quantity of 1
+          response.data.quantity = 1;
+          return [response.data];
+        }
+      });
+      setIsMessage(true);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <section className="h-[100%] py-6 px-16 ">
       <h1 className="font-bold text-[24px] mb-10">Products You Might Like</h1>
@@ -55,8 +108,11 @@ function Products() {
                     )}
                   </div>
                 </div>
-                <div className="">
-                  <span className="font-medium rounded-full p-2 border-black border-2 hover:bg-orange-500 hover:border-orange-500 transition-colors duration-400 cursor-default hover:text-white ">
+                <div>
+                  <span
+                    onClick={() => product.id && handleAddToCart(product.id)}
+                    className="font-medium rounded-full p-2 border-black border-2 hover:bg-orange-500 hover:border-orange-500 transition-colors duration-400 cursor-default hover:text-white "
+                  >
                     Add to Cart
                   </span>
                 </div>
