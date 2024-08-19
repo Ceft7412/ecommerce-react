@@ -109,7 +109,7 @@ function ShopProducts() {
           onClick={handleToggle}
           className="relative flex items-center gap-4 mt-4 justify-betweentext-[17px]"
         >
-          <span>Sort by {sortType && sortType}</span>
+          <span className="cursor-pointer">Sort by {sortType && sortType}</span>
           <IoChevronDown
             className={` transition-transform duration-400 ${
               isDropDownOpen ? "rotate-180" : ""
