@@ -1,18 +1,19 @@
-import React, { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
-import { GoPerson } from "react-icons/go";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
-import { AiOutlineHeart } from "react-icons/ai";
-import { CgSearch } from "react-icons/cg";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function NavigationBar() {
-  const { toggleCart } = useContext(CartContext);
+  const { toggleCart, cartItems } = useContext(CartContext);
+  const [numberOfItems, setNumberOfItems] = useState<number>(0);
   const location = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    setNumberOfItems(cartItems?.length || 0);
+  }, [cartItems]);
   return (
-    <header className="fixed z-20  bg-white shadow top-0 left-0 right-0 h-[80px] flex justify-between items-center p-6 px-10 bg-transparent">
+    <header className="fixed z-20 bg-white shadow top-0 left-0 right-0 h-[80px] flex justify-between items-center p-6 px-10 bg-transparent">
       <ul className="flex gap-4 text-[18px] font-normal text-orange-500">
         <li
           className={`${
@@ -37,8 +38,12 @@ function NavigationBar() {
       </ul>
       <div className="flex items-center">
         <div className="flex text-[25px] gap-4 text-neutral-600">
-          <GoPerson />
-          <HiOutlineShoppingBag className="cursor-pointer" onClick={toggleCart} />
+          <div className="relative">
+            <HiOutlineShoppingBag className="cursor-pointer" onClick={toggleCart} />
+            <span className="absolute -top-3 right-0 text-[14px] font-bold">
+              {numberOfItems}
+            </span>
+          </div>
         </div>
       </div>
     </header>
