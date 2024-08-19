@@ -4,6 +4,7 @@ import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa6";
 import { PiMessengerLogo } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 type Product = {
   id?: number;
@@ -91,9 +92,16 @@ function Products() {
               className="p-3 py-6 w-80 flex flex-col gap-2 border rounded-2xl"
               key={product.id}
             >
-              <div className="h-64 w-[95%] flex justify-center items-center p-6">
-                <img src={product.image} alt={product.title} className="h-full w-full" />
-              </div>
+              <Link to={`/product/${product.id}`}>
+                <div className="h-64 w-[95%] flex justify-center items-center p-6">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    title={product.title}
+                    className="h-full w-full hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </Link>
               <div className="h-56 text-[17px] flex flex-col justify-between">
                 <div className="flex gap-4 flex-col">
                   <span className="font-medium">{product.title}</span>
