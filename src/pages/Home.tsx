@@ -4,6 +4,7 @@ import { MdOutlineCircle } from "react-icons/md";
 import { MdCircle } from "react-icons/md";
 import { IoIosArrowBack } from "react-icons/io";
 import { AnimatePresence, motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import mensClothingImage from "../assets/images/mens_clothing.png";
 import womensClothingImage from "../assets/images/womens_clothing.png";
 import Products from "../components/Products";
@@ -25,7 +26,7 @@ const contents = [
 
 function Home() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-
+  const navigate = useNavigate();
   const handleNextClick = () => {
     setCurrentIndex((currentIndex + 1) % contents.length);
   };
@@ -52,7 +53,10 @@ function Home() {
             <h1 className="text-[80px] font-medium">{category}</h1>
             <p className="font-medium text-neutral-500">{description}</p>
             <div className="pt-16">
-              <button className="tracking-widest border p-2 bg-neutral-700 text-white font-medium hover:bg-neutral-800 outline-none">
+              <button
+                onClick={() => navigate("/shop")}
+                className="tracking-widest border p-2 bg-neutral-700 text-white font-medium hover:bg-neutral-800 outline-none"
+              >
                 SHOP NOW
               </button>
             </div>
