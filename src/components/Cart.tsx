@@ -131,22 +131,28 @@ function Cart() {
             onClick={toggleCart}
           >
             <motion.div
-              className="fixed right-0 w-[500px] top-0 bottom-0 bg-white"
+              className="fixed right-0 w-[500px] top-0 bottom-0 bg-white flex flex-col"
               onClick={(e) => e.stopPropagation()}
               variants={modalVariant}
               initial="hidden"
               animate="visible"
               exit="exit"
             >
-              <div className="border-b p-4 h-[10%] text-[18px] font-medium flex justify-between items-center">
+              <div className="border-b p-4 text-[18px] font-medium flex justify-between items-center">
                 <h1 className="tracking-wide">Cart</h1>
                 <IoClose className="text-[23px] cursor-pointer" onClick={toggleCart} />
               </div>
-              <div className="w-full p-4 h-[70%] flex flex-col gap-5 overflow-y-auto">
+              <div className="w-full p-4 flex flex-col flex-1 gap-5 overflow-y-auto">
                 {cartItems &&
                   cartItems.map((item) => (
                     <div className="flex gap-4 border-b pb-4 w-full" key={item.id}>
-                      <img src={item.image} alt={item.title} width={40} height={40} />
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        width={50 }
+                        height={20}
+                        className=""
+                      />
                       <div className="flex flex-col gap-3 w-[70%]">
                         <span
                           title={item.title}
@@ -188,13 +194,27 @@ function Cart() {
                 )}
               </div>
               {cartItems && cartItems.length !== 0 && (
-                <div className="flex justify-between h-[10%] border items-center font-medium">
-                  <span className="p-2 px-7 text-orange-400">Subtotal:</span>
-                  <span className="p-2 px-7 text-neutral-600">${total}</span>
+                <div>
+                  <div className="flex justify-between border items-center font-medium">
+                    <span className="p-2 px-7 text-orange-400">Subtotal:</span>
+                    <span className="p-2 px-7 text-neutral-600">${total}</span>
+                  </div>
+                  <div className="p-2 px-4">
+                    <button
+                      onClick={() => {
+                        navigate("/shop");
+                        toggleCart();
+                      }}
+                      type="button"
+                      className="border border-orange-500 hover:bg-orange-500 hover:text-white transition-colors duration-500 tracking-widest text-orange-500 p-4 w-full font-medium"
+                    >
+                      CHECKOUT
+                    </button>
+                  </div>
                 </div>
               )}
 
-              <div className="footer h-[10%] flex justify-center items-center w-full p-2 px-4">
+              <div className="footer flex justify-center items-center w-full p-2 px-4">
                 <button
                   onClick={() => {
                     navigate("/shop");
