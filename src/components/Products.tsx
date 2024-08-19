@@ -9,8 +9,8 @@ type Product = {
   image?: string;
   price?: number;
   rating?: {
-    rate: number;
-    count: number;
+    rate?: number;
+    count?: number;
   };
 };
 function Products() {
@@ -46,9 +46,13 @@ function Products() {
                   <span className="font-medium">{product.title}</span>
                   <span className="font-medium">${product.price}</span>
                   <div className="rating flex mb-5">
-                    {[...Array(5)].map((_, i) => (
-                      <FaRegStar key={i} className="" />
-                    ))}
+                    {[...Array(5)].map((_, i) =>
+                      product.rating && product.rating.rate && i < product.rating.rate ? (
+                        <FaStar key={i} />
+                      ) : (
+                        <FaRegStar key={i} />
+                      )
+                    )}  
                   </div>
                 </div>
                 <div className="">
