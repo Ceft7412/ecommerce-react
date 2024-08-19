@@ -38,7 +38,6 @@ function NavigationBar() {
       <div className="flex items-center">
         <div className="flex text-[25px] gap-4 text-neutral-600">
           <GoPerson />
-          <AiOutlineHeart />
           <HiOutlineShoppingBag className="cursor-pointer" onClick={toggleCart} />
         </div>
       </div>
