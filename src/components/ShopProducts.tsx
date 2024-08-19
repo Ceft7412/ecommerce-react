@@ -23,9 +23,6 @@ function ShopProducts() {
   const [loading, setLoading] = useState<boolean>(true);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [sortType, setSortType] = useState<string>("");
-  const [sortRating, setSortRating] = useState<string>("");
-  console.log("categories: ", categories);
-  console.log("products: ", products);
 
   const sortProducts = (type: string) => {
     if (products) {
@@ -73,10 +70,6 @@ function ShopProducts() {
     fetchCategories();
   }, []);
 
-  if (loading) {
-    return <section className="min-h-screen pt-[80px] px-20"></section>;
-  }
-
   const handleClickCategory = (category: string) => {
     setActiveCategory(category);
     fetchProducts(category);
@@ -101,6 +94,11 @@ function ShopProducts() {
     e.stopPropagation();
     toggleDropDown();
   };
+
+  if (loading) {
+    return <section className="min-h-screen pt-[80px] px-20"></section>;
+  }
+
   return (
     <section className="min-h-screen pt-[80px] px-20">
       <h1 className="p-4 pt-16 text-[25px] border-b">Shop</h1>
@@ -142,6 +140,7 @@ function ShopProducts() {
         {categories &&
           categories.map((category) => (
             <span
+              key={category}
               onClick={() => handleClickCategory(category)}
               className={`p-2 px-4 border rounded-full cursor-pointer ${
                 category === activeCategory ? "bg-orange-500 text-white" : ""
