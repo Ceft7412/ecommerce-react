@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
 import { MdOutlineCircle } from "react-icons/md";
 import { MdCircle } from "react-icons/md";
 import { IoIosArrowBack } from "react-icons/io";
-import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import mensClothingImage from "../assets/images/mens_clothing.png";
 import womensClothingImage from "../assets/images/womens_clothing.png";
