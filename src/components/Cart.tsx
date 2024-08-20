@@ -214,6 +214,10 @@ function Cart() {
                   <div className="footer flex justify-center items-center w-full p-2 px-4">
                     <button
                       type="button"
+                      onClick={() => {
+                        navigate("/cart");
+                        toggleCart();
+                      }}
                       className="border border-orange-500 hover:bg-orange-500 hover:text-white transition-colors duration-500 tracking-widest text-orange-500 p-4 w-full font-medium"
                     >
                       GO TO CART
