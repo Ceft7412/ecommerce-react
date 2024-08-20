@@ -10,7 +10,7 @@ import CartProvider from "./context/CartContext";
 import Shop from "./pages/Shop";
 import DropDownProvider from "./context/DropDownContext";
 import Product from "./pages/Product";
-import Cart from "./components/Cart";
+import Cart from "./pages/Cart";
 
 // To hold the router instance and pass it to the RouterProvider
 const router = createBrowserRouter(
