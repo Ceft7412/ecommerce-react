@@ -84,13 +84,13 @@ function Products() {
     }
   };
   return (
-    <section className="h-[100%] py-6 px-16 ">
+    <section className="h-[100%] py-6 px-5 sm:px-16 min-w-80">
       <h1 className="font-bold text-[24px] mb-10">Products You Might Like</h1>
-      <div className="grid grid-cols-4 gap-16">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-16">
         {products &&
           products.map((product) => (
             <div
-              className="p-3 py-6 w-80 flex flex-col gap-2 border rounded-2xl"
+              className="p-3 py-6 w-[100%] sm:w-60 md:w-72 lg:w-72 xl:w-80 flex flex-col gap-2 border rounded-2xl"
               key={product.id}
             >
               <Link to={`/product/${product.id}`}>
