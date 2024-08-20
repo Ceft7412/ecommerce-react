@@ -5,6 +5,7 @@ import { FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa6";
 import { PiMessengerLogo } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import AddToCart from "./AddToCart";
 
 type Product = {
   id?: number;
@@ -117,12 +118,7 @@ function Products() {
                   </div>
                 </div>
                 <div>
-                  <span
-                    onClick={() => product.id && handleAddToCart(product.id)}
-                    className="font-medium rounded-full p-2 border-black border-2 hover:bg-orange-500 hover:border-orange-500 transition-colors duration-400 cursor-default hover:text-white "
-                  >
-                    Add to Cart
-                  </span>
+                  <AddToCart productId={product.id} />
                 </div>
               </div>
             </div>
