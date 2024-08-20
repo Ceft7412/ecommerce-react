@@ -5,7 +5,8 @@ import { FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa6";
 import { IoChevronDown } from "react-icons/io5";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-
+import AddToCart from "./AddToCart";
+import { Link } from "react-router-dom";
 type ProductType = {
   id?: number;
   title?: string;
@@ -164,9 +165,15 @@ function ShopProducts() {
               className="p-3 py-6 w-[100%] sm:w-60 md:w-72 lg:w-72 xl:w-80 flex flex-col gap-2 border rounded-2xl"
               key={product.id}
             >
-              <div className="h-64 w-[95%] flex justify-center items-center p-6">
-                <img src={product.image} alt={product.title} className="h-full w-full" />
-              </div>
+              <Link to={`/product/${product.id}`}>
+                <div className="h-64 w-[95%] flex justify-center items-center p-6">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="h-full w-full hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </Link>
               <div className="h-56 text-[17px] flex flex-col justify-between">
                 <div className="flex gap-4 flex-col">
                   <span className="font-medium">{product.title}</span>
@@ -182,9 +189,7 @@ function ShopProducts() {
                   </div>
                 </div>
                 <div>
-                  <span className="font-medium rounded-full p-2 border-black border-2 hover:bg-orange-500 hover:border-orange-500 transition-colors duration-400 cursor-default hover:text-white ">
-                    Add to Cart
-                  </span>
+                  <AddToCart productId={product.id} />
                 </div>
               </div>
             </div>
