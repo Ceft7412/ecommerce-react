@@ -131,7 +131,7 @@ function Cart() {
             onClick={toggleCart}
           >
             <motion.div
-              className="fixed right-0 w-[500px] top-0 bottom-0 bg-white flex flex-col"
+              className="fixed right-0 w-[250px] sm:w-[500px] top-0 bottom-0 bg-white flex flex-col"
               onClick={(e) => e.stopPropagation()}
               variants={modalVariant}
               initial="hidden"
