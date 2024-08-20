@@ -44,11 +44,13 @@ function Home() {
   const { category, image, description } = contents[currentIndex];
   return (
     <>
-      <section className="relative h-screen bg-orange-50 pt-[80px] flex justify-center items-center ">
+      <section className="relative h-screen bg-orange-50 pt-[80px] flex justify-center items-center min-w-80">
         <div className="w-full h-full flex px-38 justify-between">
-          <div className="w-[50%] flex  justify-center pl-40 pb-20 text-neutral-800 flex-col">
+          <div className="md:w-[50%] flex  justify-center md:pl-40 p-10 pb-20 text-neutral-800 flex-col">
             <p className="text-[25px] text-orange-500">OUR ALL TIME FAVORITES</p>
-            <h1 className="text-[80px] font-medium">{category}</h1>
+            <h1 className="text-[20px] text-[40px] md:text-[60px] xl-[80px] font-medium">
+              {category}
+            </h1>
             <p className="font-medium text-neutral-500">{description}</p>
             <div className="pt-16">
               <button
@@ -59,25 +61,25 @@ function Home() {
               </button>
             </div>
           </div>
-          <div className="w-[50%] flex justify-center items-center ">
+          <div className="hidden md:flex sm:w-[50%] justify-center items-center ">
             <img
               src={image}
               alt={category}
-              className="h-full pr-40 object-contain rounded-xl3"
+              className="h-full hidden sm:block pr-40 object-contain rounded-xl3"
             />
           </div>
         </div>
 
-        <div className="text-[25px] text-neutral-400  ">
+        <div className="text-[25px] text-neutral-400">
           <div
-            className="absolute left-10 top-[45%] hover:text-black transition-colors duration-400"
+            className="absolute md:left-10 left-2 top-[45%] hover:text-black transition-colors duration-400"
             onClick={handlePrevClick}
           >
             <IoIosArrowBack />
           </div>
 
           <div
-            className="absolute right-10 rotate-180 top-[45%] hover:text-black transition-colors duration-400"
+            className="absolute md:right-10 right-2 rotate-180 top-[45%] hover:text-black transition-colors duration-400"
             onClick={handleNextClick}
           >
             <IoIosArrowBack />
