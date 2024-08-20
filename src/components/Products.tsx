@@ -1,5 +1,4 @@
-import { useState, useEffect, useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa6";

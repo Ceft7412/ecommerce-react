@@ -151,7 +151,6 @@ function Cart() {
                         alt={item.title}
                         width={50}
                         height={20}
-                        className=""
                       />
                       <div className="flex flex-col gap-3 w-[70%]">
                         <span
