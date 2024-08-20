@@ -100,14 +100,14 @@ function ShopProducts() {
   }
 
   return (
-    <section className="min-h-screen pt-[80px] px-20">
-      <h1 className="p-4 pt-16 text-[25px] border-b">Shop</h1>
+    <section className="min-h-screen pt-[80px] px-5 md:px-20">
+      <h1 className="p-4 sm:pt-16 text-[25px] border-b">Shop</h1>
       {/* Filters */}
-      <div className="p-2 pt-10 flex justify-between items-center">
+      <div className="p-2 pt-10 flex flex-col sm:flex-row  justify-between sm:items-center">
         <span>Showing {products?.length} results</span>
         <div
           onClick={handleToggle}
-          className="relative flex items-center gap-4 mt-4 justify-betweentext-[17px]"
+          className="relative flex items-center gap-4 mt-4 justify-between text-[17px] border sm:border-none p-2 sm:p-0"
         >
           <span className="cursor-pointer">Sort by {sortType && sortType}</span>
           <IoChevronDown
@@ -118,7 +118,7 @@ function ShopProducts() {
           {isDropDownOpen && (
             <div
               onClick={(e) => e.stopPropagation()}
-              className="absolute left-0 right-0 top-7 shadow flex flex-col bg-white border rounded"
+              className="absolute left-0 right-0 top-10 sm:top-7 shadow flex flex-col bg-white border rounded"
             >
               <span
                 onClick={() => handleSortClick("price")}
@@ -136,7 +136,7 @@ function ShopProducts() {
           )}
         </div>
       </div>
-      <div className="mt-5 flex gap-2 items-center">
+      <div className="mt-5 flex flex-wrap gap-2 items-center">
         {categories &&
           categories.map((category) => (
             <span
@@ -157,11 +157,11 @@ function ShopProducts() {
         )}
       </div>
       {/* Products */}
-      <div className="grid grid-cols-4 gap-16    mt-10">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-16 mt-10">
         {products &&
           products.map((product) => (
             <div
-              className="p-3 py-6 w-80 flex flex-col gap-2 border rounded-2xl"
+              className="p-3 py-6 w-[100%] sm:w-60 md:w-72 lg:w-72 xl:w-80 flex flex-col gap-2 border rounded-2xl"
               key={product.id}
             >
               <div className="h-64 w-[95%] flex justify-center items-center p-6">
