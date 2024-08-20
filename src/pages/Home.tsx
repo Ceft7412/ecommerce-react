@@ -48,7 +48,7 @@ function Home() {
         <div className="w-full h-full flex px-38 justify-between">
           <div className="md:w-[50%] flex  justify-center md:pl-40 p-10 pb-20 text-neutral-800 flex-col">
             <p className="text-[25px] text-orange-500">OUR ALL TIME FAVORITES</p>
-            <h1 className="text-[20px] text-[40px] md:text-[60px] xl-[80px] font-medium">
+            <h1 className="text-[20px] md:text-[60px] xl-[80px] font-medium">
               {category}
             </h1>
             <p className="font-medium text-neutral-500">{description}</p>
@@ -86,7 +86,7 @@ function Home() {
           </div>
         </div>
         <div className="absolute bottom-5 text-neutral-500 flex gap-1">
-          {contents.map((content, index) =>
+          {contents.map((_, index) =>
             currentIndex === index ? (
               <MdCircle key={index} className="text-black" />
             ) : (

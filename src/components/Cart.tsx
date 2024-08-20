@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { IoClose } from "react-icons/io5";
 import { AnimatePresence, motion } from "framer-motion";

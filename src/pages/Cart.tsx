@@ -1,5 +1,4 @@
-import { useEffect, useState, useContext } from "react";
-import axios from "axios";
+import { useContext } from "react";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { CartContext } from "../context/CartContext";
 
@@ -8,7 +7,7 @@ type Cart = {
   quantity?: number;
   image?: string;
   title?: string;
-  rating?: {
+  rating?: {  
     rate?: number;
     count?: number;
   };
