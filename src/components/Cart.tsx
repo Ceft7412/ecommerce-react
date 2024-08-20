@@ -149,7 +149,7 @@ function Cart() {
                       <img
                         src={item.image}
                         alt={item.title}
-                        width={50 }
+                        width={50}
                         height={20}
                         className=""
                       />
@@ -211,21 +211,30 @@ function Cart() {
                       CHECKOUT
                     </button>
                   </div>
+                  <div className="footer flex justify-center items-center w-full p-2 px-4">
+                    <button
+                      type="button"
+                      className="border border-orange-500 hover:bg-orange-500 hover:text-white transition-colors duration-500 tracking-widest text-orange-500 p-4 w-full font-medium"
+                    >
+                      GO TO CART
+                    </button>
+                  </div>
                 </div>
               )}
-
-              <div className="footer flex justify-center items-center w-full p-2 px-4">
-                <button
-                  onClick={() => {
-                    navigate("/shop");
-                    toggleCart();
-                  }}
-                  type="button"
-                  className="border border-orange-500 hover:bg-orange-500 hover:text-white transition-colors duration-500 tracking-widest text-orange-500 p-4 w-full font-medium"
-                >
-                  CONTINUE SHOPPING
-                </button>
-              </div>
+              {cartItems && cartItems.length === 0 && (
+                <div className="footer flex justify-center items-center w-full p-2 px-4">
+                  <button
+                    onClick={() => {
+                      navigate("/shop");
+                      toggleCart();
+                    }}
+                    type="button"
+                    className="border border-orange-500 hover:bg-orange-500 hover:text-white transition-colors duration-500 tracking-widest text-orange-500 p-4 w-full font-medium"
+                  >
+                    CONTINUE SHOPPING
+                  </button>
+                </div>
+              )}
             </motion.div>
           </section>
         )}
