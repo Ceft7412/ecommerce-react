@@ -33,12 +33,12 @@ function Cart() {
   };
 
   return (
-    <section className="min-h-screen pt-[80px] px-20 flex justify-center text-black/[0.75]">
+    <section className="min-h-screen pt-[80px] p-5 md:px-5 lg:px-20 flex justify-center text-black/[0.75]">
       <div className="flex flex-col w-full ">
-        <div className="p-10">
+        <div className="sm:p-10 pt-2 ">
           <h1 className="border-b pb-4 text-[25px] font-medium">Cart</h1>
         </div>
-        <div className="flex gap-5 p-10">
+        <div className="flex flex-col-reverse lg:flex-row gap-5 sm:p-10">
           <div className="overflow-y-auto">
             <table className="border-t border-l border-r overflow-x-auto w-[800px] ">
               <tr className="grid grid-cols-[0.3fr,1fr,1fr,1fr,1fr,1fr] text-left gap-10 p-4 bg-neutral-100 border">
@@ -79,7 +79,7 @@ function Cart() {
                 ))}
             </table>
           </div>
-          <div className="border flex flex-col w-[350px] h-[260px]">
+          <div className="border flex flex-col sm:w-[350px] h-[260px]">
             <span className="bg-neutral-100 p-4 border-b font-medium">Cart total</span>
             <div className="flex flex-col p-4">
               <div className="flex justify-between p-4 px-12 border-b">
