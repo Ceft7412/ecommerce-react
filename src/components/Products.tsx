@@ -18,7 +18,6 @@ type Product = {
 };
 function Products() {
   const [products, setProducts] = useState<Product[] | null>([]);
-  const { setCartItems } = useContext(CartContext);
 
   const fetchProducts = async () => {
     try {
