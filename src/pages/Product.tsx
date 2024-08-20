@@ -20,7 +20,6 @@ function Product() {
   const { id } = useParams();
   const [product, setProduct] = useState<ProductType | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  console.log("product: ", product);
 
   // Request the product data from the API
   const fetchProduct = async () => {

@@ -32,7 +32,6 @@ export const CartContext = createContext<CartContextState>(initialState);
 function CartProvider({ children }: CartContextType) {
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [cartItems, setCartItems] = useState<Cart[] | null>(null);
-  console.log("cartItems: ", cartItems);
 
   const toggleCart = () => {
     setIsCartOpen((prev) => !prev);

@@ -16,7 +16,6 @@ type Cart = {
 };
 function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
-  console.log("cartItems: ", cartItems);
   const total = cartItems?.reduce(
     (acc, item) => acc + (item.price ?? 0) * (item.quantity ?? 0),
     0

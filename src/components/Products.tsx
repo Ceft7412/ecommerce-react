@@ -25,13 +25,11 @@ function Products() {
   const fetchProducts = async () => {
     try {
       const response = await axios.get("https://fakestoreapi.com/products?limit=7");
-      console.log(response.data);
       setProducts(response.data);
     } catch (error) {
       console.error(error);
     }
   };
-  console.log("products: ", products);
   useEffect(() => {
     fetchProducts();
   }, []);
